@@ -1,14 +1,15 @@
 /**
  ******************************************************************************
- *
- * @file       quanton.h
- * @author     Tau Labs, http://taulabs.org, Copyright (C) 2013
- *
- * @addtogroup GCSPlugins GCS Plugins
+ * @addtogroup TauLabsTargets Tau Labs Targets
  * @{
- * @addtogroup Boards_Quantec Quantec boards support Plugin
+ * @addtogroup Nucleo Nucleo support files
  * @{
- * @brief Plugin to support boards by Quantec Networks GmbH
+ *
+ * @file       pios_usb_board_data.h
+ * @author     Tau Labs, http://taulabs.org, Copyright (C) 2012-2013
+ * @brief      Defines for board specific usb information
+ * @see        The GNU Public License (GPL) Version 3
+ * 
  *****************************************************************************/
 /*
  * This program is free software; you can redistribute it and/or modify
@@ -25,28 +26,22 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
-#ifndef QUANTON_H
-#define QUANTON_H
 
-#include <coreplugin/iboardtype.h>
+#ifndef PIOS_USB_BOARD_DATA_H
+#define PIOS_USB_BOARD_DATA_H
 
-class IBoardType;
+#define PIOS_USB_BOARD_CDC_DATA_LENGTH 64
+#define PIOS_USB_BOARD_CDC_MGMT_LENGTH 32
+#define PIOS_USB_BOARD_HID_DATA_LENGTH 64
 
-class Quanton : public Core::IBoardType
-{
-public:
-    Quanton();
-    virtual ~Quanton();
+#define PIOS_USB_BOARD_EP_NUM 4
 
-    virtual QString shortName();
-    virtual QString boardDescription();
-    virtual bool queryCapabilities(BoardCapabilities capability);
-    virtual QStringList getSupportedProtocols();
-    virtual QPixmap getBoardPicture();
-    virtual QString getHwUAVO();
-    virtual int queryMaxGyroRate();
-    virtual QStringList getAdcNames();
-};
+#include "pios_usb_defs.h" 	/* USB_* macros */
 
 
-#endif // QUANTON_H
+#define PIOS_USB_BOARD_VENDOR_ID USB_VENDOR_ID_CLAYLOGIC
+#define PIOS_USB_BOARD_PRODUCT_ID USB_PRODUCT_ID_NUCLEO
+#define PIOS_USB_BOARD_DEVICE_VER USB_OP_DEVICE_VER(0, USB_OP_BOARD_MODE_FW)
+#define PIOS_USB_BOARD_SN_SUFFIX "+FW"
+
+#endif	/* PIOS_USB_BOARD_DATA_H */
